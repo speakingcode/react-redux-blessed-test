@@ -1,0 +1,69 @@
+{
+  "name": "weighup-hub-node",
+  "version": "0.0.1",
+  "description": "nodejs implementation of weighup hub",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "npm run dev",
+    "dev": "NODE_ENV='development' babel-node ./dist/index.js",
+    "init": "mkdir dist",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean && npm run init",
+    "build": "babel ./src -d ./dist --ignore \"src/**/*.spec.js\",\"src/**/*.test.js\"",
+    "pretest": "npm run build",
+    "test": "jest",
+    "test:watch": "npm run test -- --watchAll",
+    "rawdump": "NODE_ENV=development babel-node ./dist/rawdump.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeighUp/weighup-hub-node.git"
+  },
+  "author": "@speakingcode (Daniel Lissner)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeighUp/weighup-hub-node/issues"
+  },
+  "homepage": "https://github.com/WeighUp/weighup-hub-node#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-jest": "^24.9.0",
+    "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
+    "axios": "^0.19.0",
+    "blessed": "^0.1.81",
+    "moment": "^2.24.0",
+    "react": "^16.8.6",
+    "react-blessed": "^0.6.1",
+    "react-blessed-contrib": "^0.2.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "redux-logger": "^3.0.6",
+    "reinspect": "^1.1.0",
+    "remote-redux-devtools": "^0.5.16",
+    "remotedev-server": "^0.3.1",
+    "serialport": "^9.0.1",
+    "telnet2": "0.0.1",
+    "ws": "^7.4.1"
+  }
+}
